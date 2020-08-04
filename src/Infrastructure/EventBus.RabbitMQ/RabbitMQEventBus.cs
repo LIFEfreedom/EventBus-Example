@@ -66,7 +66,7 @@ namespace LIFEfreedom.EventBusExample.Insrastructure.EventBus.RabbitMQ
 			}
 		}
 
-		public void Publish(IntegrationEvent @event)
+		public void Publish<TIntegrationEvent>(TIntegrationEvent @event) where TIntegrationEvent : IntegrationEvent
 		{
 			if (!_persistentConnection.IsConnected)
 			{
@@ -80,7 +80,8 @@ namespace LIFEfreedom.EventBusExample.Insrastructure.EventBus.RabbitMQ
 					_logger.LogWarning(ex, "Could not publish event: {EventId} after {Timeout}s ({ExceptionMessage})", @event.Id, $"{time.TotalSeconds:n1}", ex.Message);
 				});
 
-			string eventName = @event.GetType().Name;
+			Type eventType = typeof(TIntegrationEvent);
+			string eventName = eventType.Name;
 
 			_logger.LogTrace("Creating RabbitMQ channel to publish event: {EventId} ({EventName})", @event.Id, eventName);
 
@@ -91,7 +92,7 @@ namespace LIFEfreedom.EventBusExample.Insrastructure.EventBus.RabbitMQ
 
 				channel.ExchangeDeclare(exchange: BROKER_NAME, type: "direct");
 
-				byte[] body = JsonSerializer.SerializeToUtf8Bytes(@event);
+				byte[] body = JsonSerializer.SerializeToUtf8Bytes(@event, eventType);
 
 				policy.Execute(() =>
 				{
@@ -247,11 +248,11 @@ namespace LIFEfreedom.EventBusExample.Insrastructure.EventBus.RabbitMQ
 					}
 
 					Type eventType = _subsManager.GetEventTypeByName(eventName);
-					object integrationEvent = System.Text.Json.JsonSerializer.Deserialize(message, eventType);
+					object integrationEvent = JsonSerializer.Deserialize(message, eventType);
 					Type concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
 
 					await Task.Yield();
-					await (Task)concreteType.GetMethod("Handle").Invoke(handler, new object[] { integrationEvent });
+					await (Task)concreteType.GetMethod("HandleAsync").Invoke(handler, new object[] { integrationEvent });
 				}
 			}
 			else

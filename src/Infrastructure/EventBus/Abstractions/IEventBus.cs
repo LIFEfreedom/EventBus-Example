@@ -4,7 +4,7 @@ namespace LIFEfreedom.EventBusExample.Insrastructure.EventBus.Abstractions
 {
 	public interface IEventBus
 	{
-		void Publish(IntegrationEvent @event);
+		void Publish<TIntegrationEvent>(TIntegrationEvent @event) where TIntegrationEvent : IntegrationEvent;
 
 		void Subscribe<TIntegrationEvent, TIntegrationEventHandler>()
 			where TIntegrationEvent : IntegrationEvent

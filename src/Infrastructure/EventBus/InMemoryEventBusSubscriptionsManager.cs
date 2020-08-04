@@ -20,7 +20,7 @@ namespace LIFEfreedom.EventBusExample.Insrastructure.EventBus
 			where TIntegrationEvent : IntegrationEvent
 			where TIntegrationEventHandler : IIntegrationEventHandler<TIntegrationEvent>
 		{
-			Type eventType = typeof(TIntegrationEventHandler);
+			Type eventType = typeof(TIntegrationEvent);
 
 			DoAddSubscription(typeof(TIntegrationEventHandler), GetEventKeyByType(eventType));
 
