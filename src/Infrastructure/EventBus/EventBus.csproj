@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5</TargetFramework>
-    <RootNamespace>LIFEfreedom.LIFEfreedom.EventBusExample.Insrastructure.EventBus</RootNamespace>
-    <AssemblyName>LIFEfreedom.LIFEfreedom.EventBusExample.Insrastructure.EventBus</AssemblyName>
+    <RootNamespace>LIFEfreedom.EventBusExample.Insrastructure.EventBus</RootNamespace>
+    <AssemblyName>LIFEfreedom.EventBusExample.Insrastructure.EventBus</AssemblyName>
   </PropertyGroup>
 
 </Project>

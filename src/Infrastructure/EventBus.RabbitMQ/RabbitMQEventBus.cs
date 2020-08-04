@@ -20,12 +20,12 @@ using System.Threading.Tasks;
 
 namespace LIFEfreedom.EventBusExample.Insrastructure.EventBusRabbitMQ
 {
-	public class EventBusRabbitMQ : IEventBus, IDisposable
+	public class RabbitMQEventBus : IEventBus, IDisposable
 	{
 		private const string BROKER_NAME = "event_bus_example";
 
 		private readonly IRabbitMQPersistentConnection _persistentConnection;
-		private readonly ILogger<EventBusRabbitMQ> _logger;
+		private readonly ILogger<RabbitMQEventBus> _logger;
 		private readonly IEventBusSubscriptionsManager _subsManager;
 		private readonly IServiceProvider _serviceProvider;
 		private readonly int _retryCount;
@@ -33,7 +33,7 @@ namespace LIFEfreedom.EventBusExample.Insrastructure.EventBusRabbitMQ
 		private IModel _consumerChannel;
 		private string _queueName;
 
-		public EventBusRabbitMQ(IRabbitMQPersistentConnection persistentConnection, ILogger<EventBusRabbitMQ> logger,
+		public RabbitMQEventBus(IRabbitMQPersistentConnection persistentConnection, ILogger<RabbitMQEventBus> logger,
 				IServiceProvider serviceProvider, IEventBusSubscriptionsManager subsManager, string queueName = null, int retryCount = 5)
 		{
 			_persistentConnection = persistentConnection ?? throw new ArgumentNullException(nameof(persistentConnection));

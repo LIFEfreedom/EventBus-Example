@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus", "Infrastructure\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{39BA1057-7577-4F22-841E-0AAA4E7A8A6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBusRabbitMQ", "Infrastructure\EventBusRabbitMQ\EventBusRabbitMQ.csproj", "{65DF2D08-09DB-4F6D-B044-361C5EC7EA7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.RabbitMQ", "Infrastructure\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{DBD0284A-F356-4F1D-9FD1-A177E0B78751}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,17 +19,16 @@ Global
 		{9811F41C-697C-4A1F-90CB-84994BD741A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9811F41C-697C-4A1F-90CB-84994BD741A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9811F41C-697C-4A1F-90CB-84994BD741A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65DF2D08-09DB-4F6D-B044-361C5EC7EA7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65DF2D08-09DB-4F6D-B044-361C5EC7EA7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65DF2D08-09DB-4F6D-B044-361C5EC7EA7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65DF2D08-09DB-4F6D-B044-361C5EC7EA7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBD0284A-F356-4F1D-9FD1-A177E0B78751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBD0284A-F356-4F1D-9FD1-A177E0B78751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBD0284A-F356-4F1D-9FD1-A177E0B78751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBD0284A-F356-4F1D-9FD1-A177E0B78751}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9811F41C-697C-4A1F-90CB-84994BD741A6} = {39BA1057-7577-4F22-841E-0AAA4E7A8A6E}
-		{65DF2D08-09DB-4F6D-B044-361C5EC7EA7F} = {39BA1057-7577-4F22-841E-0AAA4E7A8A6E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {27B38AF6-0128-48D2-90C0-0A2D4010CE14}
