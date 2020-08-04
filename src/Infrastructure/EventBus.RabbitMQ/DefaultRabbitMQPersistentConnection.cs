@@ -11,7 +11,7 @@ using System;
 using System.IO;
 using System.Net.Sockets;
 
-namespace LIFEfreedom.EventBusExample.Insrastructure.EventBusRabbitMQ
+namespace LIFEfreedom.EventBusExample.Insrastructure.EventBus.RabbitMQ
 {
 	public class DefaultRabbitMQPersistentConnection : IRabbitMQPersistentConnection
 	{

@@ -2,7 +2,7 @@
 
 using System;
 
-namespace LIFEfreedom.EventBusExample.Insrastructure.EventBusRabbitMQ
+namespace LIFEfreedom.EventBusExample.Insrastructure.EventBus.RabbitMQ
 {
 	public interface IRabbitMQPersistentConnection
 		: IDisposable

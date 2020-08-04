@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5</TargetFramework>
-    <RootNamespace>LIFEfreedom.EventBusExample.Insrastructure.EventBusRabbitMQ</RootNamespace>
-    <AssemblyName>LIFEfreedom.EventBusExample.Insrastructure.EventBusRabbitMQ</AssemblyName>
+    <RootNamespace>LIFEfreedom.EventBusExample.Insrastructure.EventBus.RabbitMQ</RootNamespace>
+    <AssemblyName>LIFEfreedom.EventBusExample.Insrastructure.EventBus.RabbitMQ</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

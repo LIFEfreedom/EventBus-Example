@@ -1,5 +1,4 @@
-﻿using LIFEfreedom.EventBusExample.Insrastructure.EventBus;
-using LIFEfreedom.EventBusExample.Insrastructure.EventBus.Abstractions;
+﻿using LIFEfreedom.EventBusExample.Insrastructure.EventBus.Abstractions;
 using LIFEfreedom.EventBusExample.Insrastructure.EventBus.Events;
 using LIFEfreedom.EventBusExample.Insrastructure.EventBus.Extensions;
 
@@ -18,7 +17,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace LIFEfreedom.EventBusExample.Insrastructure.EventBusRabbitMQ
+namespace LIFEfreedom.EventBusExample.Insrastructure.EventBus.RabbitMQ
 {
 	public class RabbitMQEventBus : IEventBus, IDisposable
 	{
