@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 
 using System.Reflection;
 
-namespace EventGenerator
+namespace LIFEfreedom.EventBusExample.EventGenerator
 {
 	public class Program
 	{

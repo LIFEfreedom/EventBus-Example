@@ -1,4 +1,4 @@
-﻿namespace EventGenerator.Options
+﻿namespace LIFEfreedom.EventBusExample.EventGenerator.Options
 {
 	public class RabbitMQEventBusOptions
 	{

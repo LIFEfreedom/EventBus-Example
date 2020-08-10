@@ -1,5 +1,4 @@
-﻿using EventGenerator.Options;
-
+﻿using LIFEfreedom.EventBusExample.EventGenerator.Options;
 using LIFEfreedom.EventBusExample.Insrastructure.EventBus;
 using LIFEfreedom.EventBusExample.Insrastructure.EventBus.Abstractions;
 using LIFEfreedom.EventBusExample.Insrastructure.EventBus.RabbitMQ;
@@ -11,58 +10,58 @@ using Microsoft.Extensions.Options;
 
 using RabbitMQ.Client;
 
-namespace EventGenerator
+namespace LIFEfreedom.EventBusExample.EventGenerator
 {
 	public static class ServiceCollectionExtensions
 	{
 		public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
 		{
-            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+			services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
 
-            services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
+			services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
 			{
-                var options = sp.GetRequiredService<IOptions<RabbitMQEventBusOptions>>().Value;
-                var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
+				RabbitMQEventBusOptions options = sp.GetRequiredService<IOptions<RabbitMQEventBusOptions>>().Value;
+				ILogger<DefaultRabbitMQPersistentConnection> logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
 
-                var factory = new ConnectionFactory()
-                {
-                    HostName = options.Hostname,
-                    DispatchConsumersAsync = true
-                };
+				ConnectionFactory factory = new ConnectionFactory()
+				{
+					HostName = options.Hostname,
+					DispatchConsumersAsync = true
+				};
 
-                if (!string.IsNullOrEmpty(options.User))
-                {
-                    factory.UserName = options.User;
-                }
+				if (!string.IsNullOrEmpty(options.User))
+				{
+					factory.UserName = options.User;
+				}
 
-                if (!string.IsNullOrEmpty(options.Password))
-                {
-                    factory.Password = options.Password;
-                }
+				if (!string.IsNullOrEmpty(options.Password))
+				{
+					factory.Password = options.Password;
+				}
 
-                var retryCount = 5;
-                if (options.RetryCount != 0)
-                {
-                    retryCount = options.RetryCount;
-                }
+				int retryCount = 5;
+				if (options.RetryCount != 0)
+				{
+					retryCount = options.RetryCount;
+				}
 
-                return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
-            });
+				return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
+			});
 
 			services.AddSingleton<IEventBus, RabbitMQEventBus>(sp =>
 			{
-				var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
-				var logger = sp.GetRequiredService<ILogger<RabbitMQEventBus>>();
-				var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
-				var options = sp.GetRequiredService<IOptions<RabbitMQEventBusOptions>>().Value;
+				IRabbitMQPersistentConnection rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
+				ILogger<RabbitMQEventBus> logger = sp.GetRequiredService<ILogger<RabbitMQEventBus>>();
+				IEventBusSubscriptionsManager eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+				RabbitMQEventBusOptions options = sp.GetRequiredService<IOptions<RabbitMQEventBusOptions>>().Value;
 
-                var retryCount = 5;
-                if (options.RetryCount != 0)
-                {
-                    retryCount = options.RetryCount;
-                }
+				int retryCount = 5;
+				if (options.RetryCount != 0)
+				{
+					retryCount = options.RetryCount;
+				}
 
-                return new RabbitMQEventBus(rabbitMQPersistentConnection, logger, sp, eventBusSubcriptionsManager, options.Application, retryCount);
+				return new RabbitMQEventBus(rabbitMQPersistentConnection, logger, sp, eventBusSubcriptionsManager, options.Application, retryCount);
 			});
 
 			return services;

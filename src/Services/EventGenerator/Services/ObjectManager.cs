@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 using System;
 
-namespace EventGenerator.Services
+namespace LIFEfreedom.EventBusExample.EventGenerator.Services
 {
 	public class CustomObjectManager
 	{

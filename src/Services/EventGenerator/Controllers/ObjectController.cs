@@ -1,11 +1,11 @@
-﻿using EventGenerator.Services;
+﻿using LIFEfreedom.EventBusExample.EventGenerator.Services;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 using System.ComponentModel.DataAnnotations;
 
-namespace EventGenerator.Controllers
+namespace LIFEfreedom.EventBusExample.EventGenerator.Controllers
 {
 	[ApiController]
 	[Route("[controller]")]
