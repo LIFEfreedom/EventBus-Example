@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>LIFEfreedom.EventBusExample.Insrastructure.EventBus.CustomEvents</RootNamespace>
+    <AssemblyName>LIFEfreedom.EventBusExample.Insrastructure.CustomEvents</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EventBus\EventBus.csproj" />
+  </ItemGroup>
+
+</Project>
